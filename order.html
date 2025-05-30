@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+            background-color: #444;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 26px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 25px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ffb700;
+            color: #3a3f58;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .menu-item {
+            background-color: white;
+            border: 1px solid #ffb700;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .menu-item p {
+            color: #555;
+        }
+
+        .menu-item button {
+            font-family:  sans-serif;
+            background-color: #3a3f58;
+            color: #ffb700;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .menu-item button:hover {
+            background-color: #51587a;
+        }
+
+        .cart {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart h2 {
+            margin-top: 0;
+        }
+
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart ul li:last-child {
+            border-bottom: none;
+        }
+
+        .total {
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: white;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer button {
+            background-color: #3a3f58;
+            color: #ffb700;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .booking-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Order Foods</h1>
+        <ul>
+            <li><a href="user_dashboard.html">Dashboard</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+    <div class="menu">
+        <div class="menu-item">
+            <img src="pizza.jpg" alt="Pizza">
+            <h3>Pizza</h3>
+            <p>₹199</p>
+            <button onclick="addToCart('Pizza', 199)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="burger.jpeg" alt="Burger">
+            <h3>Burger</h3>
+            <p>₹99</p>
+            <button onclick="addToCart('Burger', 99)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="pasta.jpeg" alt="Pasta">
+            <h3>Pasta</h3>
+            <p>₹149</p>
+            <button onclick="addToCart('Pasta', 149)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="chowmein.jpeg" alt="Pasta">
+            <h3>Chowmein</h3>
+            <p>₹129</p>
+            <button onclick="addToCart('Chowmein', 129)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="rice.jpeg" alt="Pizza">
+            <h3>Rice and Dal</h3>
+            <p>₹99</p>
+            <button onclick="addToCart('Rice and Dal', 99)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="biryani.jpeg" alt="Pizza">
+            <h3>Biryani</h3>
+            <p>₹239</p>
+            <button onclick="addToCart('Biryani', 239)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="roti.jpeg" alt="Pizza">
+            <h3>Roti</h3>
+            <p>₹49</p>
+            <button onclick="addToCart('Roti', 49)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="dosa.jpeg" alt="Pizza">
+            <h3>Dosa</h3>
+            <p>₹99</p>
+            <button onclick="addToCart('Dosa', 99)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="naan.jpeg" alt="Pizza">
+            <h3>Naan</h3>
+            <p>₹49</p>
+            <button onclick="addToCart('Naan', 49)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="mutton.jpg" alt="Pizza">
+            <h3>Motton Curry</h3>
+            <p>₹499</p>
+            <button onclick="addToCart('Mutton Curry', 499)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="chicken.jpg" alt="Pizza">
+            <h3>Chicken Curry</h3>
+            <p>₹249</p>
+            <button onclick="addToCart('Chicken Curry', 249)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="chickenb.jpg" alt="Pizza">
+            <h3>Chicken Butter Masala</h3>
+            <p>₹249</p>
+            <button onclick="addToCart('Chicken Butter Masala', 249)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="paneer.jpg" alt="Pizza">
+            <h3>Paneer Butter Masala</h3>
+            <p>₹199</p>
+            <button onclick="addToCart('Paneer Butter Masala', 199)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="mashroom.jpg" alt="Pizza">
+            <h3>Mashroom DoPiaza</h3>
+            <p>₹199</p>
+            <button onclick="addToCart('Mashroom Dopiaza', 199)">Order</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cartItems">
+            <li>No items in cart</li>
+        </ul>
+        <p class="total">Total: ₹<span id="totalAmount">0</span></p>
+    </div>
+    <div class="booking-form">
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="name">Enter Your Room Number</label>
+                <input type="number"  required>
+            </div>
+        </form>
+    </div>
+    <div class="footer">
+        <button onclick="placeOrder()">Order</button>
+    </div>
+
+    <script>
+        const cart = [];
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const totalAmount = document.getElementById('totalAmount');
+
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((cartItem, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${cartItem.item} - ₹${cartItem.price}`;
+                cartItems.appendChild(li);
+                total += cartItem.price;
+            });
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<li>No items in cart</li>';
+            }
+
+            totalAmount.textContent = total;
+        }
+
+        function placeOrder() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+            } else {
+                alert('Order done successfully!');
+                cart.length = 0;
+                updateCart();
+            }
+        }
+    </script>
+
+</body>
+</html>

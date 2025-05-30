@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 15px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ffb700;
+            color: #3a3f58;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .view {
+            background-color: white;
+            border: 1px solid #ffb700;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            text-align: left;
+            width: 30%; /* Adjust as needed */
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .view img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .booking-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px; /* Increased padding for a larger form feel */
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 90%; /* Increased width */
+            max-width: 900px; /* Increased max-width */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 15px; /* Increased padding for larger fields */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #3a3f58;
+            color: #ffb700;
+            padding: 15px; /* Increased padding for the button */
+            border: none;
+            border-radius: 5px;
+            font-size: 18px; /* Increased font size */
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #515879;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .view,
+            .booking-form {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Payment</h1>
+        <ul>
+            <li><a href="user_dashboard.html">Dashboard</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="view">
+            <img src="scanner.jpg" alt="Hotel View 1">
+        </div>
+        <div class="booking-form">
+            <form id="bookingForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Type">Payment Type</label>
+                    <select id="Type" name="Type" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="PhonePe">PhonePe</option>
+                        <option value="Google Pay">Google Pay</option>
+                        <option value="Paytm">Paytm</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ID">Transaction ID</label>
+                    <input type="text" id="ID" name="ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="file">Upload Receipt</label>
+                    <input type="file" id="file" name="file" accept=".jpg,.jpeg,.png,.pdf">
+                </div>
+                <input type="submit" value="Done">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

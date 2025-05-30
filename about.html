@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 26px;
+        }
+
+        .dashboard-container {
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .dashboard-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 1200px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: none;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.03);
+            z-index: -1;
+            transition: background 0.5s ease;
+        }
+
+        .card:hover::before {
+            background: rgba(111, 97, 255, 0.1);
+        }
+
+        .card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #070707;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-top: 3px solid #ffb700;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="navbar">
+        <h1>The Grand Vista</h1>
+    </div>
+    <div class="dashboard-container">
+        <div class="cards-container">
+            <div class="card">
+                <p>A hotel booking system is a digital platform that allows customers to search for, book, and manage hotel reservations online. It streamlines the booking process by providing real-time availability, pricing, and room details. These systems often include features like online payment, automated confirmation emails, and integration with third-party travel agencies. Hotel booking systems benefit both customers and hotel owners by improving efficiency, reducing manual work, and enhancing the overall guest experience. Modern systems also use AI and data analytics to offer personalized recommendations and dynamic pricing based on demand.A hotel booking system is an advanced digital platform that enables customers to search for, book, and manage hotel reservations online with ease. It automates the entire booking process by displaying real-time availability, pricing, and room details, allowing travelers to make informed decisions before confirming their stay. These systems are widely used by hotels, resorts, and travel agencies to streamline operations and enhance the guest experience. With features like secure online payments, automated confirmation emails, and customer support integration, the booking process becomes more efficient and user-friendly. Additionally, modern hotel booking systems often incorporate artificial intelligence (AI) and data analytics to offer personalized recommendations, optimize pricing strategies, and analyze customer preferences. Many platforms also integrate with third-party travel agencies, ensuring wider reach and increased bookings. Hotels benefit from these systems by reducing manual administrative work, preventing overbookings, and improving overall revenue management. Customers, on the other hand, enjoy the convenience of booking accommodations from anywhere at any time, often with access to discounts, special deals, and loyalty programs. Mobile compatibility and user-friendly interfaces make it even easier for travelers to browse through different hotel options, compare prices, and secure their preferred rooms in just a few clicks. With the growing demand for digital convenience, hotel booking systems continue to evolve, incorporating advanced technologies such as chatbots for customer support, virtual room tours, and blockchain for secure transactions, further enhancing the overall efficiency and reliability of the booking experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 The Grand Vista. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

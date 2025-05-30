@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 26px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 25px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ffb700;
+            color: #3a3f58;
+        }
+        
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .booking-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #3a3f58;
+            color: #ffb700;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #515879;
+        }
+
+        #priceDisplay {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffb700;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>The Grand Vista</h1>
+        <ul>
+            <li><a href="user_dashboard.html">Dashboard</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Book a room</h2>
+
+        <div class="booking-form">
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group"> 
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="roomType">Room Type</label>
+                    <select id="roomType" name="roomType" required>
+                        <option value="" disabled selected>Select a room type</option>
+                        <option value="AC Single Bed">AC Single Bed</option>
+                        <option value="AC Double Bed">AC Double Bed</option>
+                        <option value="Non-AC Single Bed">Non-AC Single Bed</option>
+                        <option value="Non-AC Double Bed">Non-AC Double Bed</option>
+                    </select>
+                </div>
+                <div id="priceDisplay"></div>
+                <div class="form-group">
+                    <label for="date">Booking Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <input type="submit" value="Book">
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const roomTypeSelect = document.getElementById('roomType');
+        const priceDisplay = document.getElementById('priceDisplay');
+    
+        const roomPrices = {
+            'AC Single Bed': 5000,
+            'AC Double Bed': 7500,
+            'Non-AC Single Bed': 3500,
+            'Non-AC Double Bed': 4500
+        };
+    
+        roomTypeSelect.addEventListener('change', () => {
+            const selectedRoom = roomTypeSelect.value;
+            const price = roomPrices[selectedRoom];
+            priceDisplay.textContent = price ? `Price: ₹${price}` : '';
+        });
+    
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    
+        const bookingForm = document.getElementById('bookingForm');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            alert('Your room is booked! Thank you for choosing The Grand Vista.');
+            bookingForm.reset(); 
+            priceDisplay.textContent = ''; 
+        });
+    </script>    
+</body>
+</html>
