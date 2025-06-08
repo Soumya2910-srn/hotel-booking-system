@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 26px;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .menu-item {
+            background-color: white;
+            border: 1px solid #ffb700;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .menu-item button {
+            background-color: #3a3f58;
+            color: #ffb700;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .cart {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        .cart h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #3a3f58;
+            color: white;
+        }
+
+        .total {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer button {
+            background-color: #3a3f58;
+            color: #ffb700;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .form-group {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Order Foods</h1>
+    </div>
+
+    <div class="menu">
+        <div class="menu-item">
+            <img src="./images/pizza.jpg" alt="Pizza">
+            <h3>Pizza</h3>
+            <p>₹199</p>
+            <button onclick="addToCart('Pizza', 199)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/burger.jpeg" alt="Burger">
+            <h3>Burger</h3>
+            <p>₹99</p>
+            <button onclick="addToCart('Burger', 99)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/pasta.jpeg" alt="Pasta">
+            <h3>Pasta</h3>
+            <p>₹149</p>
+            <button onclick="addToCart('Pasta', 149)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/chowmein.jpeg" alt="Pasta">
+            <h3>Chowmein</h3>
+            <p>₹129</p>
+            <button onclick="addToCart('Chowmein', 129)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/rice.jpeg" alt="Pizza">
+            <h3>Rice and Dal</h3>
+            <p>₹99</p>
+            <button onclick="addToCart('Rice and Dal', 99)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/biryani.jpeg" alt="Pizza">
+            <h3>Biryani</h3>
+            <p>₹239</p>
+            <button onclick="addToCart('Biryani', 239)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/roti.jpeg" alt="Pizza">
+            <h3>Roti</h3>
+            <p>₹49</p>
+            <button onclick="addToCart('Roti', 49)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/dosa.jpeg" alt="Pizza">
+            <h3>Dosa</h3>
+            <p>₹99</p>
+            <button onclick="addToCart('Dosa', 99)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/naan.jpeg" alt="Pizza">
+            <h3>Naan</h3>
+            <p>₹49</p>
+            <button onclick="addToCart('Naan', 49)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/mutton.jpg" alt="Pizza">
+            <h3>Motton Curry</h3>
+            <p>₹499</p>
+            <button onclick="addToCart('Mutton Curry', 499)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/chicken.jpg" alt="Pizza">
+            <h3>Chicken Curry</h3>
+            <p>₹249</p>
+            <button onclick="addToCart('Chicken Curry', 249)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/chickenb.jpg" alt="Pizza">
+            <h3>Chicken Butter Masala</h3>
+            <p>₹249</p>
+            <button onclick="addToCart('Chicken Butter Masala', 249)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/paneer.jpg" alt="Pizza">
+            <h3>Paneer Butter Masala</h3>
+            <p>₹199</p>
+            <button onclick="addToCart('Paneer Butter Masala', 199)">Order</button>
+        </div>
+        <div class="menu-item">
+            <img src="./images/mashroom.jpg" alt="Pizza">
+            <h3>Mashroom DoPiaza</h3>
+            <p>₹199</p>
+            <button onclick="addToCart('Mashroom Dopiaza', 199)">Order</button>
+        </div>
+
+    </div>
+
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price (₹)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cartItemsTable">
+                <tr><td colspan="3">No items in cart</td></tr>
+            </tbody>
+        </table>
+        <p class="total">Total: ₹<span id="totalAmount">0</span></p>
+    </div>
+
+    <div class="form-group">
+        <label for="roomNumber">Enter Your Room Number</label>
+        <input type="number" id="roomNumber" required>
+    </div>
+
+    <div class="footer">
+        <button onclick="placeOrder()">Place Order</button>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 20px;">My Orders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Room Number</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Order Time</th>
+            </tr>
+        </thead>
+        <tbody id="orderTable"></tbody>
+    </table>
+
+    <script src="order.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #cfd3d6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 975px;
+            background: #fff;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 75%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #3a3f58;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>My Bookings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Room Type</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Payment Type</th>
+                </tr>
+            </thead>
+            <tbody id="bookingTable"></tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const userId = localStorage.getItem("loggedInUser");
+            if (!userId) {
+                alert("User not logged in!");
+                window.location.href = "login.html";
+                return;
+            }
+
+            try {
+                const response = await fetch(`/get-bookings/${userId}`);
+                const data = await response.json();
+
+                if (data.success && data.bookings.length > 0) {
+                    data.bookings.forEach(booking => {
+                        document.getElementById("bookingTable").innerHTML += `
+                            <tr>
+                                <td>${booking.user_id}</td>
+                                <td>${booking.name}</td>
+                                <td>${booking.email}</td>
+                                <td>${booking.phone}</td>
+                                <td>${booking.room_type}</td>
+                                <td>₹${booking.price}</td>
+                                <td>${booking.booking_date}</td>
+                                <td>${booking.payment_type}</td>
+                            </tr>`;
+                    });
+                } else {
+                    document.getElementById("bookingTable").innerHTML = "<tr><td colspan='8'>No bookings found.</td></tr>";
+                }
+            } catch (error) {
+                console.error("Error fetching bookings:", error);
+                alert("Error retrieving bookings.");
+            }
+        });
+    </script>
+</body>
+</html>

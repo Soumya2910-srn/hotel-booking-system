@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+            background-color: #444;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 15px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ffb700;
+            color: #3a3f58;
+        }
+
+        .photo {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .view {
+            background-color: white;
+            border: 1px solid #ffb700;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .view img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar h1 {
+                font-size: 18px;
+            }
+
+            .navbar ul li {
+                margin-left: 10px;
+            }
+
+            .navbar ul li a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .view {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar ul li {
+                margin: 5px 0;
+            }
+
+            .photo {
+                padding: 10px;
+            }
+
+            .view {
+                margin: 5px;
+                padding: 10px;
+            }
+
+            .view img {
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Views Of Hotel</h1>
+        <ul>
+            <li><a href="user_dashboard.html">Dashboard</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+    <div class="photo">
+        <div class="view">
+            <img src="./images/view1.jpg" alt="Hotel View 1">
+        </div>
+        <div class="view">
+            <img src="./images/view2.jpg" alt="Hotel View 2">
+        </div>
+        <div class="view">
+            <img src="./images/view3.jpg" alt="Hotel View 3">
+        </div>
+        <div class="view">
+            <img src="./images/view4.jpg" alt="Hotel View 4">
+        </div>
+        <div class="view">
+            <img src="./images/view5.jpg" alt="Hotel View 5">
+        </div>
+        <div class="view">
+            <img src="./images/view6.jpg" alt="Hotel View 6">
+        </div>
+        <div class="view">
+            <img src="./images/view7.jpg" alt="Hotel View 7">
+        </div>
+        <div class="view">
+            <img src="./images/view8.jpg" alt="Hotel View 8">
+        </div>
+    </div>
+</body>
+</html>

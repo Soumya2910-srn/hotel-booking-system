@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+        }
+
+        .container {
+            width: 95%; 
+            max-width: 1300px; 
+            margin: 50px auto;
+            background: white;
+            padding: 40px; 
+            border-radius: 15px; 
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2); 
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3a3f58;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #3a3f58;
+            color: #ffb700;
+        }
+
+        .remove-btn {
+            background-color: rgb(252, 252, 252);
+            color: rgb(8, 8, 8);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background-color: rgb(114, 105, 105);
+        }
+        #fetch-bookings {
+            font-size: 18px;
+            padding: 15px 25px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>All Bookings</h2>
+        <button id="fetch-bookings">Check All Bookings</button>
+
+        <table id="bookings-table">
+            <thead>
+                <tr>
+                    <th>Serial No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Room Type</th>
+                    <th>Price</th>
+                    <th>Booking Date</th>
+                    <th>Payment Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('fetch-bookings').addEventListener('click', async function () {
+            try {
+                const response = await fetch('/get-all-bookings');
+                const result = await response.json();
+
+                if (result.success) {
+                    const tableBody = document.querySelector('#bookings-table tbody');
+                    tableBody.innerHTML = '';
+
+                    result.bookings.forEach((booking, index) => {
+                        const row = `<tr id="booking-${index}">
+                            <td>${index + 1}</td>
+                            <td>${booking.name}</td>
+                            <td>${booking.email}</td>
+                            <td>${booking.phone}</td>
+                            <td>${booking.room_type}</td>
+                            <td>${booking.price}</td>
+                            <td>${booking.booking_date}</td>
+                            <td>${booking.payment_type}</td>
+                            <td><button class="remove-btn" onclick="removeBooking(${index})">Remove</button></td>
+                        </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                } else {
+                    alert('No bookings found.');
+                }
+            } catch (error) {
+                alert('Error fetching bookings.');
+            }
+        });
+
+        async function removeBooking(serialNo) {
+            if (!confirm("Are you sure you want to remove this booking?")) return;
+            document.getElementById(`booking-${serialNo}`).remove();
+        }
+    </script>
+</body>
+</html>

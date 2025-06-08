@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 26px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 25px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ffb700;
+            color: #3a3f58;
+        }
+
+        .dashboard-container {
+            flex: 1; /* Pushes the footer to the bottom */
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        
+        
+        .dashboard-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #3a3f58;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            width: 300px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #3a3f58;
+        }
+
+        .card p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .card a {
+            display: inline-block;
+            background-color: #ffb700;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #e6a600;
+        }
+
+        /* Card icons */
+        .card-icon {
+            font-size: 40px;
+            color: #3a3f58;
+            margin-bottom: 20px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #3a3f58;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            border-top: 3px solid #ffb700;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+                max-width: 350px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>The Grand Vista</h1>
+        <ul>
+            <li><a href="landingpage.html">Logout</a></li>
+            <li><a href="bookings.html">Check Booking</a></li>
+        </ul>
+    </div>
+
+    
+    <div class="dashboard-container">
+        <h2 class="dashboard-title">Welcome to Your Dashboard</h2>
+
+        <div class="cards-container">
+
+            <div class="card">
+                <div class="card-icon">&#127970;</div> 
+                <h3>Book Your Room</h3>
+                <p>Explore and select your suitable room.</p>
+                <a href="bookpay.html">Explore</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">&#127828;</div> 
+                <h3>Order Food</h3>
+                <p>Check the food and order your favourite dish.</p>
+                <a href="order.html">Order</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">&#127748;</div> 
+                <h3>See The Hotel View</h3>
+                <p>Explore the beauty of the hotel.</p>
+                <a href="view.html">View</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 The Grand Vista. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Orders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1300px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3a3f58;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #3a3f58;
+            color: #ffb700;
+        }
+
+        .remove-btn {
+            background-color: white;
+            color: black;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background-color: rgb(135, 129, 129);
+        }
+        #fetch-orders {
+            font-size: 18px;
+            padding: 15px 25px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>All Orders</h2>
+        <button id="fetch-orders">Check All Orders</button>
+        <table id="orders-table">
+            <thead>
+                <tr>
+                    <th>Serial No</th>
+                    <th>Room Number</th>
+                    <th>Item Name</th>
+                    <th>Price</th>
+                    <th>Order Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('fetch-orders').addEventListener('click', async function () {
+            try {
+                const response = await fetch('/get-all-orders');
+                const result = await response.json();
+                if (result.success) {
+                    const tableBody = document.querySelector('#orders-table tbody');
+                    tableBody.innerHTML = '';
+                    result.orders.forEach((order, index) => {
+                        const row = `<tr id="order-${index}">
+                            <td>${index + 1}</td>
+                            <td>${order.room_number}</td>
+                            <td>${order.item_name}</td>
+                            <td>${order.price}</td>
+                            <td>${order.order_time}</td>
+                            <td><button class="remove-btn" onclick="removeOrder(${index})">Remove</button></td>
+                        </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                } else {
+                    alert('No orders found.');
+                }
+            } catch (error) {
+                alert('Error fetching orders.');
+            }
+        });
+        async function removeOrder(serialNo) {
+            if (!confirm("Are you sure you want to remove this order?")) return;
+            document.getElementById(`order-${serialNo}`).remove();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a3f58;
+            padding: 15px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .navbar h1 {
+            color: #ffb700;
+            font-weight: 700;
+            font-size: 26px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 25px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ffb700;
+            color: #3a3f58;
+        }
+
+        /* Dashboard container */
+        .dashboard-container {
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .dashboard-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* Feature cards */
+        .cards-container {
+            display: flex;
+            justify-content: center; 
+            gap: 10px; 
+            flex-wrap: wrap;
+        }
+        
+
+        .card {
+            background-color: white;
+            width: 300px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.03);
+            z-index: -1;
+            transition: background 0.5s ease;
+        }
+
+        .card:hover::before {
+            background: rgba(111, 97, 255, 0.1);
+        }
+
+        .card h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #3a3f58;
+        }
+
+        .card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .card a {
+            background-color: #FFD700;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #ffc107;
+        }
+
+        /* Card icons */
+        .card-icon {
+            font-size: 50px;
+            color: #3a3f58;
+            margin-bottom: 15px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-top: 3px solid #ffb700;
+            margin-top: 200px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>The Grand Vista</h1>
+        <ul>
+            <li><a href="landingpage.html" onclick="logout()">Logout</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <h2 class="dashboard-title">Welcome to Dashboard</h2>
+
+        <!-- Cards Container -->
+        <div class="cards-container">
+
+            <div class="card">
+                <div class="card-icon">&#127970;</div> 
+                <h3>Booked Room</h3>
+                <p>Check the booked rooms.</p>
+                <a href="all_bookings.html">Check</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">&#127828;</div> 
+                <h3>Orders</h3>
+                <p>Check the food orders.</p>
+                <a href="all_orders.html">Check</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 The Grand Vista. All rights reserved.</p>
+    </footer>
+
+    <!-- Logout Script -->
+    <script>
+        function logout() {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

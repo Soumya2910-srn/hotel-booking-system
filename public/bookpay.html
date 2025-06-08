@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking & Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+     body {
+          font-family: 'Poppins', sans-serif;
+          background: #cfd3d6;
+          margin: 0;
+          padding: 0;
+      }
+      .navbar {
+          background-color: #2d3142;
+          color: #ffb700;
+          padding: 15px 30px;
+          font-size: 10px;
+          font-weight: 700;
+      }
+      .container {
+          max-width: 600px;
+          background: #fff;
+          margin: 30px auto;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+          font-size: 22px;
+          color: #333;
+      }
+      label {
+          font-weight: 600;
+          display: block;
+          margin: 10px 0 5px;
+      }
+      input, select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+      }
+      button {
+          width: 100%;
+          padding: 12px;
+          background-color: #2d3142;
+          color: #ffb700;
+          font-size: 16px;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+          margin-top: 15px;
+          border-radius: 5px;
+      }
+      button:hover {
+          background-color: #232736;
+      }
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Hotel Booking & Payment</h1>
+    </div>
+    <div class="container">
+     <h2>Book a Room</h2>
+     <form id="bookingForm">
+         <label for="userId">User ID</label>
+         <input type="text" id="userId" required>
+         <label for="name">Full Name</label>
+         <input type="text" id="name" required>
+         <label for="phone">Phone Number</label>
+         <input type="tel" id="phone" required>
+         <label for="email">Email</label>
+         <input type="email" id="email" required>
+         <label for="roomType">Room Type</label>
+         <select id="roomType" required>
+             <option value="">Select a room type</option>
+             <option value="AC Single Bed">AC Single Bed</option>
+             <option value="AC Double Bed">AC Double Bed</option>
+             <option value="Non-AC Single Bed">Non-AC Single Bed</option>
+             <option value="Non-AC Double Bed">Non-AC Double Bed</option>
+         </select>
+         <div id="priceDisplay">Price: ₹0</div>
+         <label for="date">Booking Date</label>
+         <input type="date" id="date" required>
+         <img src="./images/scanner.jpg" alt="Scanner" style="width: 150px; height: auto; display: block; margin: 10px 0;">
+         <label for="paymentType">Payment Type</label>
+         <select id="paymentType" required>
+             <option value="">Select</option>
+             <option value="PhonePe">PhonePe</option>
+             <option value="Google Pay">Google Pay</option>
+             <option value="Paytm">Paytm</option>
+         </select>
+         <label for="transactionId">Transaction ID</label>
+         <input type="text" id="transactionId" required>
+         <label for="receipt">Upload Receipt</label>
+         <input type="file" id="receipt" accept=".jpg,.jpeg,.png,.pdf" required>
+         <button id="bookButton">Book</button>
+     </form>
+ </div>
+    <script src="bookpay.js"></script>
+</body>
+</html>

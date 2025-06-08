@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & SignUp Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script defer src="login.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+            padding: 30px;
+        }
+
+        .tab-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            cursor: pointer;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            width: 50%;
+            text-align: center;
+            background-color: #eee;
+            transition: background-color 0.3s;
+        }
+
+        .tab.active {
+            background-color: #3a3f58;
+            color: #ffb700;
+        }
+
+        .form {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        .form input, .form select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3a3f58;
+            color: #ffb700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .form button:hover {
+            background-color: #515879;
+        }
+
+        .form p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .form p a {
+            color: #3a3f58;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Tab selection -->
+        <div class="tab-group">
+            <div class="tab active" id="login-tab">Login</div>
+            <div class="tab" id="signup-tab">Sign Up</div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="form active" id="login-form">
+            <h2>Login</h2>
+            <select id="user-type">
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <input type="text" id="login-userid" placeholder="ID" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button id="login-button">Login</button>
+            <p>Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form" id="signup-form">
+            <h2>Sign Up</h2>
+            <select id="signup-user-type">
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <input type="text" id="signup-name" placeholder="Name" required>
+            <input type="text" id="signup-userid" placeholder="ID" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+            <button id="signup-button">Sign Up</button>
+            <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
