@@ -7,7 +7,19 @@ const path = require('path');
 const multer = require('multer');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 3000;
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public'))); // or your folder name
+
+// Default route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); // or your folder
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // Database Connection
 const db = mysql.createConnection({
