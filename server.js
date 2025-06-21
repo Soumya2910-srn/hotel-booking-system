@@ -7,7 +7,7 @@ const path = require('path');
 const multer = require('multer');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public'))); // or your folder name
